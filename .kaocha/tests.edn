@@ -1,0 +1,9 @@
+#kaocha/v1
+{:tests [{:id :unit
+          :kaocha.filter/skip-meta [:gen]}
+         {:id :gen
+          :kaocha.filter/focus-meta [:gen]
+          :kaocha.filter/skip-meta [:slow]}
+         {:id :slow
+          :kaocha.filter/focus-meta [:slow]}
+         {:id :all}]}

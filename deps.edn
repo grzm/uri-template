@@ -1,0 +1,16 @@
+{:paths ["src" "resources"]
+ :aliases
+ {:test {:extra-paths ["test/resources" "test/src"]
+         :extra-deps {org.clojure/data.json {:mvn/version "2.4.0"}
+                      org.clojure/test.check {:mvn/version "1.1.1"}}}
+  :readme {:extra-deps {seancorfield/readme
+                        {:git/url "https://github.com/seancorfield/readme.git"
+                         :git/sha "d17192c846fb6e4df5e72bfddc1870a120b611a7"}}
+           :main-opts ["-m" "seancorfield.readme" "README.markdown"]}
+  :kaocha {:extra-deps {lambdaisland/kaocha {:mvn/version "1.0.829"}}
+           :main-opts ["-m" "kaocha.runner" "--config-file" ".kaocha/tests.edn"]}
+  :build {:extra-paths ["build/src"]
+          :deps {clj-commons/pomegranate {:mvn/version "1.2.1"}
+                 io.github.clojure/tools.build {:git/tag "v0.1.6" :git/sha "5636e61"}
+                 slipset/deps-deploy {:mvn/version "0.2.0"}}
+          :ns-default build}}}

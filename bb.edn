@@ -1,0 +1,14 @@
+{:tasks
+ {test {:task (let [op (first *command-line-args*)]
+                (if (= op "readme")
+                  (clojure  "-M:readme")
+                  (apply clojure (into ["-M:test:kaocha"] *command-line-args*))))}
+  cljfmt {:task (shell "cljfmt fix src test build")}
+  lint {:task (shell "clj-kondo --lint src test build")}
+  clean {:task (clojure "-T:build" "clean")}
+  jar {:task (clojure "-T:build" "jar")}
+  build {:task (clojure "-T:build" "build")
+         :doc "clean and jar"}
+  prep {:task (run! run ['cljfmt 'lint 'test 'build])}
+  deploy-snapshot {:task (clojure "-T:build" "deploy-snapshot")}
+  deploy-release {:task (clojure  "-T:build" "deploy-release")}}}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <description>A Clojure implementation of URI Template (RFC 6570).</description>
+  <url>https://github.com/grzm/uri-template</url>
+  <scm>
+    <connection>scm:git:git@github.com:grzm/uri-template.git</connection>
+    <developerConnection>scm:git:git@github.com:grzm/uri-template.git</developerConnection>
+    <url>https://github.com/grzm/uri-template/</url>
+  </scm>
+  <developers>
+    <developer>
+      <name>Michael Glaesemann</name>
+      <email>grzm@seespotcode.net</email>
+      <url>http://seespotcode.net</url>
+    </developer>
+  </developers>
+  <licenses>
+    <license>
+      <name>The MIT License</name>
+      <url>https://mit-license.org</url>
+    </license>
+  </licenses>
+</project>
+<!-- This is the project's POM template. Do not remove. -->

@@ -1,0 +1,46 @@
+{"Literal Tests"
+ {:level 1,
+  :variables {},
+  :testcases
+  [["fooフーbar" "foo%E3%83%95%E3%83%BCbar"]
+   ["foo.bar" "foo.bar"]
+   ["foo%25bar" "foo%25bar"]
+   ["50%more" "50%25more"]
+   ["50%2525more" "50%2525more"]]},
+ "Associative List Tests"
+ {:level 4,
+  :variables
+  {"50.5%25" "half_and_half",
+   "quarters" {"25%" "25%", "¼" "1/4"},
+   "encoded_quarters" {"25%25" "25%25", "¼" "1/4"}},
+  :testcases
+  [["{50.5%25}" "half_and_half"]
+   ["{?50.5%25}" "?50.5%25=half_and_half"]
+   ["{quarters}" "25%25,25%25,%C2%BC,1%2F4"]
+   ["{quarters*}" "25%25=25%25,%C2%BC=1%2F4"]
+   ["{?quarters*}" "?25%25=25%25&%C2%BC=1%2F4"]
+   ["{encoded_quarters}" "25%2525,25%2525,%C2%BC,1%2F4"]
+   ["{encoded_quarters*}" "25%2525=25%2525,%C2%BC=1%2F4"]
+   ["{+encoded_quarters}" "25%25,25%25,%C2%BC,1/4"]
+   ["{+encoded_quarters*}" "25%25=25%25,%C2%BC=1/4"]]},
+ "Prefix Tests"
+ {:level 4,
+  :variables {"var" "value"},
+  :testcases
+  [["{var:1}" "v"]
+   ["{var:10}" "value"]
+   ["{var:100}" "value"]
+   ["{var:9999}" "value"]]},
+ "Reserved Failure Tests"
+ {:level 2,
+  :variables
+  {"50.5%25" "half_and_half",
+   "quarters" {"25%" "25%", "¼" "1/4"},
+   "reserved_quarters" {"25%25" "25%25",
+                        "¼" "1/4"}},
+  :testcases [["{+quarters}" "25%25,25%25,%C2%BC,1/4"]]},
+ "Prefix Failure Tests"
+ {:level 4,
+  :variables {"foo" "bar"},
+  :testcases
+  [["{foo:}" false] ["{foo:0}" false] ["{foo:10000}" false]]}}
